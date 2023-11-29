@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<h1 style =" width:50%; margin:auto ;text-align: center"> TODO LIST </h1>
+<hr>
+
+<table class="table" style ="width:80%; margin:auto">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title </th>
+      <th scope="col">Description</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Due_date</th>
+      <th scope="col">Completed</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for  item in form %}
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.priority}}</td>
+      <td>{{item.due_date}}</td>
+      <td>{{item.completed}}</td>
+      <td><a href="{% url 'update_todo' id=item.id  %}" class='btn btn-warning btn-sm'>Update</a> <a href="{% url 'delete_todo' id=item.id  %}"  class='btn btn-primary btn-sm'>Delete</a></td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+<h1 style="text-align:center"> BOOK LIST</h1>
+<hr>
+<table class="table" style ="width:80%; margin:auto">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Book name </th>
+      <th scope="col">Author</th>
+      <th scope="col">Category</th>
+      <th scope="col">First_pub</th>
+      <th scope="col">Last_pub</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for  item in data %}
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.book_name}}</td>
+      <td>{{item.author}}</td>
+      <td>{{item.category}}</td>
+      <td>{{item.first_pub}}</td>
+      <td>{{item.last_pub}}</td>
+      <td><a href="{% url 'edit_book' id=item.id  %}" class='btn btn-warning btn-sm'>Edit</a> <a href="{% url 'delete_book' id=item.id  %}"  class='btn btn-primary btn-sm'>Delete</a></td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+{% endblock %}
